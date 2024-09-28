@@ -16,6 +16,7 @@ public class SecurityConfig {
         http
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/home", "/news").permitAll()  // Allow public access to /home and /news
+                        .requestMatchers("/profile").authenticated()  // Require authentication for /profile
                         .anyRequest().authenticated()  // All other requests require authentication
                 )
                 .formLogin(form -> form
