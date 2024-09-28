@@ -15,14 +15,14 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/home", "/news").permitAll()  // Allow public access to /home and /news
+                        .requestMatchers("/home", "/news", "/custom-login").permitAll()  // Allow public access to /home and /news
                         .requestMatchers("/profile").authenticated()  // Require authentication for /profile
                         .anyRequest().authenticated()  // All other requests require authentication
                 )
                 .formLogin(form -> form
-                        .loginPage("/login")  // Custom login page
-                        .defaultSuccessUrl("/home", true)  // Redirect to "/home" after successful login
-                        .permitAll()  // Allow access to the login page for all users
+
+                        .defaultSuccessUrl("/home", true).permitAll()  // Allow everyone to see the login page
+
                 ).logout(logout -> logout
                         .logoutUrl("/logout")  // URL to trigger logout
                         .logoutSuccessUrl("/login?logout")  // Redirect to login page after logout
