@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProfileController {
     @GetMapping
     public String newsPage() {
-        return "News page";
+        return "Profile page";
     }
 }
